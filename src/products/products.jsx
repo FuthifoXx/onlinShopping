@@ -1,40 +1,19 @@
-import { useEffect, useState } from 'react';
-import Product from './Product';
-import Loading from './Loading';
+import Product from '../products/Product';
 
-const url = '#';
-function products() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(url);
-      const products = await response.json();
-      console.log(products);
-    } catch (error) {
-      console.log(error);
-    }
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <main>
-        <Loading />
-      </main>
-    );
-  }
+function Products({ products }) {
   return (
-    <main>
-      <Product products={products} />
-    </main>
+    <section>
+      <div className="title">
+        <h2>our items</h2>
+        <div className="underline"></div>
+      </div>
+      <div className="products">
+        {products.map((product) => {
+          return <Product key={product.id} {...product} />;
+        })}
+      </div>
+    </section>
   );
 }
 
-export default products;
+export default Products;

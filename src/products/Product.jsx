@@ -1,16 +1,20 @@
-function Product({ products }) {
+function Product({
+  id,
+  productImage,
+  productTitle,
+  productDetails,
+  price,
+  status,
+}) {
   return (
-    <section>
-      <div className="title">
-        <h2>Our Products</h2>
-        <div className="title-underline"></div>
+    <article>
+      <img src={productImage} alt="" />
+      <span className="item-price">${price}</span>
+      <div className="product-info">
+        <h5>{productTitle}</h5>
+        <p>{productDetails}</p>
       </div>
-      <div className="products">
-        {products.map((product) => {
-          return <Product key={product.id} {...Product} />;
-        })}
-      </div>
-    </section>
+    </article>
   );
 }
 
