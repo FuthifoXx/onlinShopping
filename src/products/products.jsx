@@ -4,14 +4,10 @@ function Products({ products }) {
   return (
     <section>
       <div className="title">
-        <h2>our items</h2>
+        <h2>Our Products</h2>
         <div className="underline"></div>
       </div>
-      <div className="products">
-        {products.map((product) => {
-          return <Product key={product.id} {...product} />;
-        })}
-      </div>
+      <div className="products"></div>
     </section>
   );
 }
